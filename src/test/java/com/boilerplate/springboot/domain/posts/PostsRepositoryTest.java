@@ -13,14 +13,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PostRepositoryTest {
+public class PostsRepositoryTest {
 
     @Autowired
-    PostRepository postRepository;
+    PostsRepository postsRepository;
 
     @After
     public void cleanup() {
-        postRepository.deleteAll();
+        postsRepository.deleteAll();
     }
 
     @Test
@@ -30,14 +30,14 @@ public class PostRepositoryTest {
         String content = "테스트 본문";
 
         // 테이블 posts에 insert/update 쿼리를 실행한다. id 값이 없으면 insert
-        postRepository.save(Posts.builder()
+        postsRepository.save(Posts.builder()
                     .title(title)
                     .content(content)
                     .author("sapzape")
                     .build());
 
         //when
-        List<Posts> postsList = postRepository.findAll();
+        List<Posts> postsList = postsRepository.findAll();
         Posts posts = postsList.get(0);
         assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);
