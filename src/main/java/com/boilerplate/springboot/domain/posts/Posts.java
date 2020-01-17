@@ -1,5 +1,6 @@
 package com.boilerplate.springboot.domain.posts;
 
+import com.boilerplate.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 // 테이블과 링크될 클래스
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     // 해당 테이블의 PK 필드
     @Id
     // PK 생성 규칙 (GenerationType.IDENTITY -> auto_increment)
